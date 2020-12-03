@@ -1,14 +1,14 @@
-local String = {}
+local StringUtils = {}
 
-function String.trim(str)
+function StringUtils.trim(str)
 	return string.match(str, "^%s*(.-)%s*$")
 end
 
-function String.trimStart(str)
+function StringUtils.trimStart(str)
 	return string.match(str, "^%s*(.-)$")
 end
 
-function String.trimEnd(str)
+function StringUtils.trimEnd(str)
 	return string.match(str, "^(.-)%s*$")
 end
 
@@ -31,27 +31,27 @@ local function getPadding(str, maxLength, fillString)
 	return string.sub(filler, 1, fillLen)
 end
 
-function String.padStart(str, maxLength, fillString)
+function StringUtils.padStart(str, maxLength, fillString)
 	return getPadding(str, maxLength, fillString) .. str
 end
 
-function String.padEnd(str, maxLength, fillString)
+function StringUtils.padEnd(str, maxLength, fillString)
 	return str .. getPadding(str, maxLength, fillString)
 end
 
-function String.slice(str, i, j)
+function StringUtils.slice(str, i, j)
 	return string.sub(str, i + 1, j)
 end
 
-function String.indexOf(str, searchElement, fromIndex)
+function StringUtils.indexOf(str, searchElement, fromIndex)
 	return (string.find(str, searchElement, (fromIndex or 0) + 1, true) or 0) - 1
 end
 
-function String.includes(str, searchElement, fromIndex)
+function StringUtils.includes(str, searchElement, fromIndex)
 	return string.find(str, searchElement, (fromIndex or 0) + 1, true) ~= nil
 end
 
-function String.startsWith(str1, str2, pos)
+function StringUtils.startsWith(str1, str2, pos)
 	local n1 = #str1
 	local n2 = #str2
 
@@ -65,7 +65,7 @@ function String.startsWith(str1, str2, pos)
 	return last <= n1 and string.sub(str1, pos + 1, last) == str2
 end
 
-function String.endsWith(str1, str2, pos)
+function StringUtils.endsWith(str1, str2, pos)
 	local n1 = #str1
 	local n2 = #str2
 
@@ -81,4 +81,4 @@ function String.endsWith(str1, str2, pos)
 	return start > 0 and string.sub(str1, start, pos) == str2
 end
 
-return String
+return StringUtils

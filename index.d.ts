@@ -1,4 +1,4 @@
-declare namespace String {
+declare namespace StringUtils {
 	/** Returns a new string equivalent to this string but with the whitespace removed from the start and end. */
 	function trim(str: string): string;
 
@@ -71,4 +71,4 @@ declare namespace String {
 	function startsWith(str: string, searchString: string, position?: number): boolean;
 }
 
-export = String;
+export = StringUtils;
