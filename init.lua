@@ -1,15 +1,18 @@
 local StringUtils = {}
 
 function StringUtils.trim(str)
-	return string.match(str, "^%s*(.-)%s*$")
+	local from = string.match(str, "^%s*()")
+	return from > #str and "" or string.match(str, ".*%S", from)  -- there is no escaping 2n complexity, but we can prevent n^2
 end
 
 function StringUtils.trimStart(str)
-	return string.match(str, "^%s*(.-)$")
+	local from = string.match(str, "^%s*()")
+	return from > #str and "" or string.sub(str, from)
 end
 
 function StringUtils.trimEnd(str)
-	return string.match(str, "^(.-)%s*$")
+	local _, from = string.find(str, "^%s*") -- checking this prevents quadratic backtracking
+	return from == #str and "" or string.match(str, ".*%S") -- there is no escaping 2n/3n complexity, but we can prevent n^2
 end
 
 -- https://github.com/tc39/proposal-string-pad-start-end/blob/master/polyfill.js
@@ -40,6 +43,7 @@ function StringUtils.padEnd(str, maxLength, fillString)
 end
 
 function StringUtils.slice(str, i, j)
+	if j ~= nil and j < 0 then j = j - 1 end
 	return string.sub(str, i + 1, j)
 end
 
