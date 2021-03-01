@@ -1,6 +1,6 @@
 {
   "name": "@rbxts/string-utils",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Polyfills for String functions",
   "main": "init.lua",
   "typings": "index.d.ts",
