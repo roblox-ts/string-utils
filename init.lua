@@ -22,8 +22,8 @@ local function getPadding(str, maxLength, fillString)
 	local filler = fillString == nil and " " or fillString
 	if filler == "" then return str end
 	local fillLen = maxLength - stringLength
-	while filler.length < fillLen do
-		local fLen = filler.length
+	while #filler < fillLen do
+		local fLen = #filler
 		local remainingCodeUnits = fillLen - fLen
 		if fLen > remainingCodeUnits then
 			filler = filler .. string.sub(filler, 1, remainingCodeUnits)
